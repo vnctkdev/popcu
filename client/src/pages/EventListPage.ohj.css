@@ -1,0 +1,572 @@
+.popcu-root {
+  width: 100%;
+  min-height: 100vh;
+  background: #fff;
+  font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+/* 네비게이션 */
+.popcu-nav {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 18px 12px 18px;
+  background: #fff;
+  box-sizing: border-box;
+}
+.popcu-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.popcu-logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popcu-logo-text {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #222;
+  letter-spacing: -0.02em;
+}
+.popcu-nav-search {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.15s;
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+}
+.popcu-nav-search:hover {
+  background: #f3f4f6;
+}
+
+/* 카테고리 필터 */
+.popcu-category-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 0 18px 10px 18px;
+  margin: 0 auto 8px auto;
+  max-width: 900px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+}
+.popcu-category-scroll::-webkit-scrollbar {
+  display: none;
+}
+.popcu-category-btn {
+  font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+  font-size: 1.01rem;
+  font-weight: 600;
+  color: #555;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 22px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  outline: none;
+  margin-bottom: 2px;
+  white-space: nowrap;
+}
+.popcu-category-btn.active {
+  background: #f87171;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* 정렬/토글 */
+.popcu-sort-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto 18px auto;
+  padding-left: 0;
+  box-sizing: border-box;
+}
+.popcu-sort-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 150px;
+}
+.popcu-sort-select {
+  width: 100%;
+  font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+  font-size: 1.01rem;
+  font-weight: 500;
+  color: #444;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 8px 36px 8px 14px;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  transition: border 0.15s;
+  box-sizing: border-box;
+}
+.popcu-sort-select:focus {
+  border: 1.5px solid #f87171;
+}
+.popcu-sort-arrow {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+}
+.popcu-toggle-group {
+  display: flex;
+  gap: 6px;
+}
+.popcu-toggle-group button {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.15s, box-shadow 0.15s;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+}
+.popcu-toggle-group button.active {
+  background: #f87171;
+  box-shadow: 0 2px 8px #f8717188;
+}
+.popcu-toggle-group button svg {
+  display: block;
+}
+
+/* 카드형 UI */
+.popcu-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 2.2rem;
+  box-shadow: 0 4px 24px #e0e0e0aa;
+  overflow: hidden;
+  min-height: 340px;
+  aspect-ratio: 4/5;
+  text-decoration: none;
+  color: #222;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border: none;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.popcu-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: #eee;
+  overflow: hidden;
+  border-top-left-radius: 2.2rem;
+  border-top-right-radius: 2.2rem;
+  position: relative;
+}
+.popcu-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.popcu-card-info {
+  background: #fff;
+  padding: 1.2rem 1.1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+}
+
+.popcu-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 0.15rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popcu-card-meta {
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+  margin-bottom: 0.1rem;
+  font-size: 1.01rem;
+  font-weight: 600;
+}
+.popcu-card-date {
+  color: #f87171;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.popcu-card-location {
+  color: #888;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.popcu-card-desc {
+  font-size: 1.05rem;
+  color: #444;
+  margin-top: 0.2rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
+
+/* 리스트형 UI */
+.popcu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin: 0 auto 0 auto;
+  max-width: 900px;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+.popcu-list-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 1.5rem;
+  box-shadow: 0 2px 12px #e0e0e0aa;
+  overflow: hidden;
+  min-height: 120px;
+  text-decoration: none;
+  color: #222;
+  transition: transform 0.16s, box-shadow 0.16s;
+  border: none;
+  cursor: pointer;
+  will-change: transform;
+}
+.popcu-list-img-wrap {
+  position: relative;
+  width: 110px;
+  min-width: 110px;
+  height: 110px;
+  background: #eee;
+  overflow: hidden;
+  border-radius: 1.5rem 0 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.popcu-list-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.popcu-list-info {
+  background: #fff;
+  padding: 1.2rem 1.1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+}
+.popcu-list-title {
+  font-size: 1.13rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 0.12rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.popcu-list-meta {
+  display: flex;
+  gap: 1.1rem;
+  align-items: center;
+  margin-bottom: 0.1rem;
+  font-size: 1.01rem;
+  font-weight: 600;
+}
+.popcu-list-date {
+  color: #f87171;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.popcu-list-location {
+  color: #888;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.popcu-list-desc {
+  font-size: 1.05rem;
+  color: #444;
+  margin-top: 0.2rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
+
+/* 안내문구 */
+.popcu-empty-list {
+  width: 100%;
+  max-width: 900px;
+  margin: 60px auto 0 auto;
+  text-align: center;
+  color: #b0b3b8;
+  font-size: 1.13rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.7;
+  font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+/* 푸터 */
+.popcu-footer {
+  width: 100%;
+  max-width: 900px;
+  margin: 60px auto 0 auto;
+  padding: 36px 0 18px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  font-family: 'Pretendard', 'Noto Sans KR', system-ui, sans-serif;
+}
+.popcu-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 2px;
+}
+.popcu-footer-instagram {
+  margin-bottom: 2px;
+}
+.popcu-footer-instagram svg {
+  display: block;
+}
+.popcu-footer-copyright {
+  color: #888;
+  font-size: 0.98rem;
+  margin-bottom: 2px;
+  text-align: center;
+}
+.popcu-footer-admin {
+  color: #b0b3b8;
+  font-size: 0.93rem;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.popcu-strong-title {
+  font-size: 1.35rem !important;
+  font-weight: 900 !important;
+  color: #222 !important;
+  margin-bottom: 0.2rem !important;
+  line-height: 1.25 !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popcu-card-meta, .popcu-list-meta {
+  display: flex;
+  gap: 1.3rem;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  font-size: 1.01rem;
+  font-weight: 600;
+}
+
+.popcu-card-date, .popcu-list-date {
+  color: #f87171;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+}
+.popcu-card-location, .popcu-list-location {
+  color: #888;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.popcu-strong-desc {
+  font-size: 1.08rem !important;
+  color: #444 !important;
+  margin-top: 0.25rem !important;
+  line-height: 1.6 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3.3em;
+}
+
+.popcu-card-info, .popcu-list-info {
+  background: #fff;
+  padding: 1.2rem 1.1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-sizing: border-box;
+}
+
+.popcu-card-desc, .popcu-list-desc {
+  font-size: 1.05rem;
+  color: #444;
+  margin-top: 0.2rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+}
+
+.popcu-card, .popcu-list-item {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 2.2rem;
+  box-shadow: 0 4px 24px #e0e0e0aa;
+  overflow: hidden;
+  min-height: 340px;
+  aspect-ratio: 4/5;
+  text-decoration: none;
+  color: #222;
+  transition: transform 0.18s, box-shadow 0.18s;
+  border: none;
+  cursor: pointer;
+  will-change: transform;
+}
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .popcu-nav {
+    padding: 14px 8px 8px 8px;
+    max-width: 100vw;
+  }
+  .popcu-logo-text {
+    font-size: 1.05rem;
+  }
+  .popcu-nav-search {
+    width: 32px;
+    height: 32px;
+  }
+  .popcu-category-scroll {
+    padding: 0 8px 8px 8px;
+    max-width: 100vw;
+    gap: 6px;
+  }
+  .popcu-category-btn {
+    font-size: 0.93rem;
+    padding: 7px 13px;
+    border-radius: 16px;
+  }
+  .popcu-sort-toggle-row {
+    gap: 6px;
+    margin: 0 auto 10px auto;
+    padding-left: 0;
+    max-width: 100vw;
+  }
+  .popcu-sort-wrap {
+    width: 120px;
+    margin: 0 0 12px 8px;
+  }
+  .popcu-sort-select {
+    font-size: 0.93rem;
+    padding: 7px 28px 7px 10px;
+    border-radius: 8px;
+  }
+  .popcu-sort-arrow {
+    right: 7px;
+  }
+  .popcu-toggle-group button {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  .popcu-card-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    padding: 0 8px;
+  }
+  .popcu-card {
+    min-height: 220px;
+    border-radius: 1.2rem;
+  }
+  .popcu-card-img-wrap {
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+  }
+  .popcu-card-info {
+    padding: 0.9rem 0.7rem 0.8rem 0.7rem;
+  }
+  .popcu-list-item {
+    min-height: 80px;
+    border-radius: 0.9rem;
+  }
+  .popcu-list-img-wrap {
+    width: 70px;
+    min-width: 70px;
+    height: 70px;
+    border-radius: 0.9rem 0 0 0.9rem;
+  }
+  .popcu-list-info {
+    padding: 0.9rem 0.7rem 0.8rem 0.7rem;
+  }
+  .popcu-footer {
+    max-width: 100vw;
+    margin: 38px auto 0 auto;
+    padding: 22px 0 10px 0;
+    gap: 7px;
+  }
+  .popcu-footer-copyright {
+    font-size: 0.87rem;
+  }
+  .popcu-footer-admin {
+    font-size: 0.82rem;
+  }
+  .popcu-empty-list {
+    font-size: 0.98rem;
+    margin: 38px auto 0 auto;
+  }
+} 
