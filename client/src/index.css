@@ -10,11 +10,4 @@ body {
   line-height: 1.5;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: #111;
-    color: #fff;
-  }
-}
-
 @import './assets/fonts.css';

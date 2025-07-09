@@ -478,6 +478,16 @@
   will-change: transform;
 }
 
+.popcu-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
 /* 반응형 */
 @media (max-width: 600px) {
   .popcu-nav {
