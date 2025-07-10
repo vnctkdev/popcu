@@ -1,8 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import EventListPage from './pages/EventListPage';
 import AdminPage from './pages/AdminPage';
-// import EventListPage from './pages/EventListPage';
 
 function App() {
-  return <AdminPage />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EventListPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
