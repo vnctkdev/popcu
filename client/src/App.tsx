@@ -1,8 +1,8 @@
-import React from 'react';
-import EventListPage from './pages/EventListPage';
+import AdminPage from './pages/AdminPage';
+// import EventListPage from './pages/EventListPage';
 
 function App() {
-  return <EventListPage />;
+  return <AdminPage />;
 }
 
 export default App;
