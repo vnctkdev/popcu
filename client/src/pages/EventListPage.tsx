@@ -15,58 +15,6 @@ const sortOptions = [
   { label: '최신순', value: 'latest' },
   { label: '마감임박순', value: 'ending' },
 ];
-const sampleEvents = [
-  {
-    _id: '1',
-    name: '2024 서울 팝업 페스티벌',
-    type: '팝업',
-    startDate: '2024-07-20',
-    endDate: '2024-07-28',
-    location: '서울 성수동',
-    imageUrl: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80',
-    description: '트렌디한 브랜드가 모이는 서울 대표 팝업 페스티벌!'
-  },
-  {
-    _id: '2',
-    name: '부산 여름 뮤직 콘서트',
-    type: '콘서트',
-    startDate: '2024-08-05',
-    endDate: '2024-08-06',
-    location: '부산 해운대',
-    imageUrl: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80',
-    description: '바다와 음악이 어우러지는 여름밤 콘서트!'
-  },
-  {
-    _id: '3',
-    name: '경기 아트 마켓',
-    type: '페스티벌',
-    startDate: '2024-07-15',
-    endDate: '2024-07-18',
-    location: '경기 고양시',
-    imageUrl: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80',
-    description: '아트와 핸드메이드가 가득한 감성 마켓!'
-  },
-  {
-    _id: '4',
-    name: '인천 썸머 페스티벌',
-    type: '페스티벌',
-    startDate: '2024-08-01',
-    endDate: '2024-08-03',
-    location: '인천 송도',
-    imageUrl: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80',
-    description: '여름을 시원하게 날려줄 인천 대표 페스티벌!'
-  },
-  {
-    _id: '5',
-    name: '서울 한강 나이트 콘서트',
-    type: '콘서트',
-    startDate: '2024-07-25',
-    endDate: '2024-07-25',
-    location: '서울 여의도',
-    imageUrl: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80',
-    description: '한강 야경과 함께하는 감성 나이트 콘서트!'
-  },
-];
 
 const categoryColors: Record<string, string> = {
   '팝업': '#fbb6ce',
@@ -78,10 +26,30 @@ const categoryColors: Record<string, string> = {
   '전체': '#f87171',
 };
 
+type Event = {
+  _id: string;
+  name: string;
+  type: string;
+  startDate: string;
+  endDate: string;
+  location: string;
+  imageUrl: string;
+  description: string;
+};
+
 const EventListPage = () => {
   const [selectedCategory, setSelectedCategory] = React.useState('all');
   const [sort, setSort] = React.useState('popular');
   const [view, setView] = React.useState('grid');
+  const [events, setEvents] = React.useState<Event[]>([]);
+
+  React.useEffect(() => {
+    // 실제 서버에서 이벤트 목록 불러오기 (예시)
+    fetch('/api/events')
+      .then(res => res.json())
+      .then(data => setEvents(data))
+      .catch(() => setEvents([]));
+  }, []);
 
   return (
     <div className="popcu-root">
@@ -166,10 +134,10 @@ const EventListPage = () => {
         </div>
       </div>
       {/* 카드/리스트 토글에 따라 샘플 카드 5개 렌더링 */}
-      {sampleEvents.length > 0 ? (
+      {events.length > 0 ? (
         view === 'grid' ? (
           <section className="popcu-card-grid">
-            {sampleEvents.map(event => (
+            {events.map(event => (
               <div className="popcu-card" key={event._id}>
                 <div className="popcu-card-img-wrap">
                   <img src={event.imageUrl} alt={event.name} loading="lazy" />
@@ -178,14 +146,8 @@ const EventListPage = () => {
                 <div className="popcu-card-info">
                   <div className="popcu-card-title popcu-strong-title">{event.name}</div>
                   <div className="popcu-card-meta">
-                    <span className="popcu-card-date">
-                      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" style={{marginRight:4,verticalAlign:'middle'}}><rect x="3" y="5" width="14" height="12" rx="3" stroke="#f87171" strokeWidth="1.5"/><rect x="7" y="9" width="6" height="2" rx="1" fill="#f87171"/><rect x="6" y="2" width="2" height="4" rx="1" fill="#f87171"/><rect x="12" y="2" width="2" height="4" rx="1" fill="#f87171"/></svg>
-                      {event.startDate} ~ {event.endDate}
-                    </span>
-                    <span className="popcu-card-location">
-                      <svg width="14" height="14" viewBox="0 0 20 20" fill="none" style={{marginRight:3,verticalAlign:'middle'}}><circle cx="10" cy="10" r="8" stroke="#888" strokeWidth="1.3"/><circle cx="10" cy="10" r="3" fill="#f87171"/></svg>
-                      {event.location}
-                    </span>
+                    <span className="popcu-card-date">{event.startDate} ~ {event.endDate}</span>
+                    <span className="popcu-card-location">{event.location}</span>
                   </div>
                   <div className="popcu-card-desc popcu-strong-desc">{event.description}</div>
                 </div>
@@ -194,7 +156,7 @@ const EventListPage = () => {
           </section>
         ) : (
           <section className="popcu-list">
-            {sampleEvents.map(event => (
+            {events.map(event => (
               <div className="popcu-list-item" key={event._id}>
                 <div className="popcu-list-img-wrap">
                   <img src={event.imageUrl} alt={event.name} loading="lazy" />
@@ -203,14 +165,8 @@ const EventListPage = () => {
                 <div className="popcu-list-info">
                   <div className="popcu-list-title popcu-strong-title">{event.name}</div>
                   <div className="popcu-list-meta">
-                    <span className="popcu-list-date">
-                      <svg width="15" height="15" viewBox="0 0 20 20" fill="none" style={{marginRight:3,verticalAlign:'middle'}}><rect x="3" y="5" width="14" height="12" rx="3" stroke="#f87171" strokeWidth="1.5"/><rect x="7" y="9" width="6" height="2" rx="1" fill="#f87171"/><rect x="6" y="2" width="2" height="4" rx="1" fill="#f87171"/><rect x="12" y="2" width="2" height="4" rx="1" fill="#f87171"/></svg>
-                      {event.startDate} ~ {event.endDate}
-                    </span>
-                    <span className="popcu-list-location">
-                      <svg width="13" height="13" viewBox="0 0 20 20" fill="none" style={{marginRight:2,verticalAlign:'middle'}}><circle cx="10" cy="10" r="8" stroke="#888" strokeWidth="1.3"/><circle cx="10" cy="10" r="3" fill="#f87171"/></svg>
-                      {event.location}
-                    </span>
+                    <span className="popcu-list-date">{event.startDate} ~ {event.endDate}</span>
+                    <span className="popcu-list-location">{event.location}</span>
                   </div>
                   <div className="popcu-list-desc popcu-strong-desc">{event.description}</div>
                 </div>
